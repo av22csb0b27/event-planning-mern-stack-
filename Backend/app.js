@@ -1,3 +1,4 @@
+import path from "path";
 import express from "express";
 import { dbConnection } from "./database/dbConnection.js";
 import dotenv, { config } from "dotenv";
