@@ -9,6 +9,8 @@ const app = express();
 
 dotenv.config({path: "./config/config.env"});
 
+const __dirname = path.resolve();
+
 // app.use(cors({
 //     origin: 'https://aayojan-event-planner.netlify.app/',
 //     methods: ["POST"],
@@ -21,6 +23,8 @@ dotenv.config({path: "./config/config.env"});
 //     allowedHeaders: ["Content-Type", "Authorization"],
 //     credentials: true
 // }));
+
+app.use(express.static(path.join(__dirname, "Frontend/dist")));
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, "Frontend", "dist", "index.html"));
