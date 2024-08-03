@@ -11,7 +11,7 @@ const Contact = ()=>{
 
     const handleSendMessage = async(e)=>{
         e.preventDefault();
-        await axios.post("/send",{name,email,subject,message},{withCredentials:true,headers:{"Content-Type":"application/json"}}).then(res=>{
+        await axios.post("/api/v1/message/send",{name,email,subject,message},{withCredentials:true,headers:{"Content-Type":"application/json"}}).then(res=>{
             toast.success(res.data.message);
             setName("");
             setEmail("");
