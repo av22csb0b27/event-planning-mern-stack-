@@ -8,18 +8,22 @@ const app = express();
 
 dotenv.config({path: "./config/config.env"});
 
-app.use(cors({
-    origin: 'https://aayojan-event-planner.netlify.app/',
-    methods: ["POST"],
-    credentials: true
-}));
+// app.use(cors({
+//     origin: 'https://aayojan-event-planner.netlify.app/',
+//     methods: ["POST"],
+//     credentials: true
+// }));
 
-app.options('*', cors({
-    origin: 'https://aayojan-event-planner.netlify.app/',
-    methods: ["POST"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true
-}));
+// app.options('*', cors({
+//     origin: 'https://aayojan-event-planner.netlify.app/',
+//     methods: ["POST"],
+//     allowedHeaders: ["Content-Type", "Authorization"],
+//     credentials: true
+// }));
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, "Frontend", "dist", "index.html"));
+})
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
